@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka
+  labels:
+    app: kafka
+spec:
+  ports:
+    - port: 9092
+      name: kafka-port
+    - port: 9999
+      name: kafka-monitor
+  selector:
+    app: kafka
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper
+  labels:
+    app: zookeeper
+spec:
+  ports:
+    - port: 2181
+      name: zookeeper-port
+      targetPort: 2181
+  selector:
+    app: zookeeper
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pingackfd
+  labels:
+    app: pingackfd
+spec:
+  ports:
+    - port: 8080
+      name: pingackfd-port
+  selector:
+    app: pingackfd
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: testclient
+  labels:
+    app: testclient
+spec:
+  ports:
+    - port: 8080
+      name: testclient-port
+  selector:
+    app: testclient
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: testheartbeat
+  labels:
+    app: testheartbeat
+spec:
+  ports:
+    - port: 8080
+      name: testheartbeat-port
+  selector:
+    app: testheartbeat

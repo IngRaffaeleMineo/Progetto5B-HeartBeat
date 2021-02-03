@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pingackfd
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: pingackfd
+template:
+  metadata:
+    labels:
+      app: pingackfd-pod
+  spec:
+    containers:
+      - name: pingackfd
+        image: pingackfd:v1
+        ports:
+        -containerPort: 8080
+        envFrom:
+        - configMapRef:
+          name: pingackfd-env
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 8080
+          initialDelaySeconds: 15
+          timeoutSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 8080
+          initialDelaySeconds: 40
+          timeoutSeconds: 3
