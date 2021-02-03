@@ -49,3 +49,11 @@ Ogni micro-servizio periodicamente (periodo definita con variabile d'ambiente) e
 }
 Le due key, rappresentano, rispettivamente, uno stato generale del servizio e lo stato di connessione al database. La key service, invece, riporta
 il nome del micro-service.
+
+#K8s minikube use
+    docker build -t pingackfd:v1 -f PingAckFaultDetector/Dockerfile ./pingackfd
+    docker build -t testclient:v1 -f TestClient/Dockerfile ./testclient
+    docker build -t testheartbeat:v1 -f TestHeartBeat/Dockerfile ./testheartbeat
+    kubectrl apply -f k8s/pingackfd
+    kubectrl apply -f k8s/testclient
+    kubectrl apply -f k8s/testheartbeat
