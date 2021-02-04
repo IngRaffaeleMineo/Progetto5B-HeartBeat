@@ -61,8 +61,8 @@ docker build -t testclient:v1 -f TestClient/Dockerfile ./testclient
 
 docker build -t testheartbeat:v1 -f TestHeartBeat/Dockerfile ./testheartbeat
 
-kubectrl apply -f k8s/pingackfd
+kubectl apply -f k8s/pingackfd
 
-kubectrl apply -f k8s/testclient
+kubectl apply -f k8s/testclient
 
-kubectrl apply -f k8s/testheartbeat
+kubectl apply -f k8s/testheartbeat
