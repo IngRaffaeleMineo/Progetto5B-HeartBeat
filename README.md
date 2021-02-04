@@ -66,3 +66,5 @@ kubectl apply -f k8s/pingackfd
 kubectl apply -f k8s/testclient
 
 kubectl apply -f k8s/testheartbeat
+
+kubectl apply -f k8s/kafka

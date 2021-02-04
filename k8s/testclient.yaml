@@ -11,7 +11,7 @@ spec:
 template:
   metadata:
     labels:
-      app: testclient-pod
+      app: testclient
   spec:
     containers:
       - name: testclient
